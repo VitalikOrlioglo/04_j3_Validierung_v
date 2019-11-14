@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head></h:head>
+
+<h:body>
+<h:messages />
+	<h:form id="myform">
+	
+		<h:panelGrid columns="3">
+		
+			<h:outputLabel for="vorname" value="Vorname" />
+			<h:inputText id="vorname" required="true">
+				<f:validateLength maximum="20" minimum="2"/>
+			</h:inputText>
+			<h:message for="vorname"/>
+			
+			<h:outputLabel for="plz" value="PLZ" />
+			<h:inputText id="plz" required="true">
+				<f:validateRegex pattern="[0-9]{5}"/>
+			</h:inputText>
+			<h:message for="plz"/>
+			
+			<h:outputLabel for="email" value="E-Mail" />
+			<h:inputText id="email" required="true">
+				<!-- validatorId ist frei wählbar: gute Idee Klassenname -->
+				<f:validator validatorId="validators.EmailValidator" />
+			</h:inputText>
+			<h:message for="email"/>
+		
+		</h:panelGrid>
+		<h:commandButton value="Send"/>
+	
+	</h:form>
+</h:body>
+</html>
